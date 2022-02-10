@@ -33,22 +33,24 @@ export default function handleRequest(
   // Render the component to a string.
   const html = renderToString(<MuiRemixServer />);
 
-  // Grab the CSS from emotion
-  const { styles } = extractCriticalToChunks(html);
+  // // Grab the CSS from emotion
+  // const { styles } = extractCriticalToChunks(html);
 
-  let stylesHTML = '';
+  // let stylesHTML = '';
 
-  styles.forEach(({ key, ids, css }) => {
-    const emotionKey = `${key} ${ids.join(' ')}`;
-    const newStyleTag = `<style data-emotion="${emotionKey}">${css}</style>`;
-    stylesHTML = `${stylesHTML}${newStyleTag}`;
-  });
+  // styles.forEach(({ key, ids, css }) => {
+  //   const emotionKey = `${key} ${ids.join(' ')}`;
+  //   const newStyleTag = `<style data-emotion="${emotionKey}">${css}</style>`;
+  //   stylesHTML = `${stylesHTML}${newStyleTag}`;
+  // });
 
-  // Add the emotion style tags after the insertion point meta tag
-  const markup = html.replace(
-    /<meta(\s)*name="emotion-insertion-point"(\s)*content="emotion-insertion-point"(\s)*\/>/,
-    `<meta name="emotion-insertion-point" content="emotion-insertion-point"/>${stylesHTML}`,
-  );
+  // // Add the emotion style tags after the insertion point meta tag
+  // const markup = html.replace(
+  //   /<meta(\s)*name="emotion-insertion-point"(\s)*content="emotion-insertion-point"(\s)*\/>/,
+  //   `<meta name="emotion-insertion-point" content="emotion-insertion-point"/>${stylesHTML}`,
+  // );
+
+  const markup = html;
 
   responseHeaders.set('Content-Type', 'text/html');
 

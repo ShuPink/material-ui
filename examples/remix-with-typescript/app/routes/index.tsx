@@ -2,6 +2,12 @@ import * as React from 'react';
 import type { MetaFunction } from 'remix';
 import { Link } from 'remix';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import styles from '../styles/index.css';
+
+export function links() {
+  return [{ rel: 'stylesheet', href: styles }];
+}
 
 // https://remix.run/api/conventions#meta
 export const meta: MetaFunction = () => {
@@ -21,6 +27,13 @@ export default function Index() {
       <Link to="/about" color="secondary">
         Go to the about page
       </Link>
+      <div>
+        Global css example. If prepend is working I should be monospace font otherwise I will be
+        roboto.
+      </div>
+      <Button className="button" variant="contained">
+        Regular stylesheet example. If prepend is working I should be red, otherwise I will be blue
+      </Button>
     </React.Fragment>
   );
 }
